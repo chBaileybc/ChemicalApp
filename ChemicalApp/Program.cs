@@ -17,7 +17,7 @@ namespace ChemicalApp
         {
             //Enter and store chemical name
 
-            Console.WriteLine("Enter a chemical for testing below:\n\n" +
+            Console.WriteLine("Enter the number for the chemical you want to test:\n\n" +
                 "1.Propane\n" +
                 "2.Cyanide\n" +
                 "3.Bleach\n" +
@@ -30,9 +30,15 @@ namespace ChemicalApp
 
             Console.WriteLine($"\n{chemicals[chemicalName-1]}\n");
 
+            
+
             //Randomly generate a random amount of germs
 
             Random randGen = new Random();
+
+            int chemicalNameValue = randGen.Next(2000, 3000);
+
+            int sumGermGenerated = 0;
 
             int germCount = randGen.Next(2000, 7500);
 
@@ -40,27 +46,28 @@ namespace ChemicalApp
 
             //Display an amount of time waited for testing
 
-            int germTime = randGen.Next(1,30);
+            int germTime = randGen.Next(20,30);
 
-            Console.WriteLine($"You have waited {germTime}s after using {chemicals[chemicalName-1]}\n");
+            Console.WriteLine($"You have waited {germTime}s after using {chemicals[chemicalName-1]} on the germs\n");
 
-            //Add chemical to amount of germs
+            //Calculate the efficiecy rating of that chemical tested
 
-            Console.WriteLine("");
+            float efficiencyRating = germCount - chemicalNameValue / germTime;
+
+            Console.WriteLine($"The efficiency rating for {chemicals[chemicalName-1]} is {efficiencyRating}\n");
 
             //Sample the live amount of germs left after testing
 
-            //Calculate the efficiecy rating of that chemical tested
+
 
             //Display each chemicals efficiency rating over the 5 tests
 
             //Loop 5 times
             for (int chemicalTest = 0; chemicalTest < 5; chemicalTest++)
             {
+                
 
-
-
-
+                
             }
 
         }
