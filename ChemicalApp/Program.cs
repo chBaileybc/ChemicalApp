@@ -30,50 +30,60 @@ namespace ChemicalApp
 
             Console.WriteLine($"\n{chemicals[chemicalName-1]}\n");
 
-            
+            float sumEfficiency = 0;
 
-            //Randomly generate a random amount of germs
+            //Loop 5 times
 
-            Random randGen = new Random();
+            for (int chemicalTest = 0; chemicalTest < 5; chemicalTest++)
+            {
+                //Randomly generate a random amount of germs
 
-            int chemicalNameValue = randGen.Next(2000, 3000);
+                Random randGen = new Random();
 
-            int sumGermGenerated = 0;
+                int germCount = randGen.Next(2000, 2500);
 
-            int germCount = randGen.Next(2000, 7500);
+                Console.WriteLine($"There are {germCount} germs for testing\n");
 
-            Console.WriteLine($"There are {germCount} germs for testing\n");
+                //Display an amount of time waited for testing
 
-            //Display an amount of time waited for testing
+                int germTime = randGen.Next(10, 15);
 
-            int germTime = randGen.Next(20,30);
+                Console.WriteLine($"You have waited {germTime}s after using {chemicals[chemicalName - 1]} on the germs\n");
 
-            Console.WriteLine($"You have waited {germTime}s after using {chemicals[chemicalName-1]} on the germs\n");
+                int afterGerm = randGen.Next(1000, 1500);
+
+                Console.WriteLine($"There are {afterGerm} germs remaining\n");
+                
+
+                //Add chemical to amount of germs
+
+                float chemicalEfficiency = (float)(germCount - afterGerm) / germTime;
+
+                sumEfficiency += chemicalEfficiency;
+            }
 
             //Calculate the efficiecy rating of that chemical tested
 
-            float efficiencyRating = germCount - chemicalNameValue / germTime;
+            float finalEfficiency = sumEfficiency / 5;
 
-            Console.WriteLine($"The efficiency rating for {chemicals[chemicalName-1]} is {efficiencyRating}\n");
+            //Display efficiency rating of the chemical
 
-            //Sample the live amount of germs left after testing
-
-
+            Console.WriteLine($"The efficiency rating of {chemicals[chemicalName - 1]} is {finalEfficiency}");
 
             //Display each chemicals efficiency rating over the 5 tests
 
-            //Loop 5 times
-            for (int chemicalTest = 0; chemicalTest < 5; chemicalTest++)
-            {
-                
 
-                
-            }
 
         }
         static void Main(string[] args)
         {
             OneChemical();
+
+            //Loop(While) OneChemical() until user types "XXX" or "xxx"
+
+            //Determine the chemicals with the highest rating and lowest rating
+
+            //Display the chemicals with the highest and lowest rating
         }
     }
-}
+} 
