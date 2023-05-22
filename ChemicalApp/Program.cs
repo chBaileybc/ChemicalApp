@@ -12,13 +12,14 @@ namespace ChemicalApp
         static float HighChemicalRating = -1;
 
         static string LowChemical = "";
-        static int LowChemicalRating = 1000;
+        static float LowChemicalRating = 1000;
 
         static List<string> chemicals = new List<string>()
         { "Propane", "Cyanide", "Bleach", "Hot water","Alcohol"};
 
         //methods and/or functions
 
+        //Checking if user entered a number 1-5 to test a chemical
         static int CheckInt(string question, int min, int max)
         {
             while (true)
@@ -49,11 +50,7 @@ namespace ChemicalApp
                 }
             }
         }
-
-
-
-
-
+        //Checking when the user wants to continue/stop
         static string CheckFlag()
         {
             while (true)
@@ -81,6 +78,7 @@ namespace ChemicalApp
             }
         }
 
+        //Testing a chemical for its efficiency rating
         static void OneChemical()
         {
             //Enter and store chemical name
@@ -137,8 +135,7 @@ namespace ChemicalApp
             float finalEfficiency = sumEfficiency / 5;
 
             //Display efficiency rating of the chemical
-
-            Console.WriteLine($"\nThe efficiency rating of {chemicals[chemicalName - 1]} is {finalEfficiency}");
+            Console.WriteLine($"\nThe efficiency rating of {chemicals[chemicalName - 1]} is {Math.Round(finalEfficiency, 2)}");
 
             //Determine the chemicals with the lowest and highest efficiency rating
 
@@ -149,7 +146,7 @@ namespace ChemicalApp
             }
             if (finalEfficiency < LowChemicalRating)
             {
-                LowChemicalRating = (int)finalEfficiency;
+                LowChemicalRating = (float)finalEfficiency;
                 LowChemical = chemicals[chemicalName - 1];
             }
         }
@@ -177,7 +174,8 @@ namespace ChemicalApp
                 "Chemical App will let you choose between 5 different chemicals.\n" + 
                 "It calculates the efficiency rating of the chemical tested over 5 individual tests.\n" +
                 "It will then display a summary of the 5 tests and its efficiency rating\n" +
-                "lastly, it will display the highest and lowest efficiency ratings ove three chemicals tested ");
+                "lastly, it will display the highest and lowest efficiency ratings over three chemicals tested ");
+            
             Console.WriteLine("\n<~-------------------------------------------------------------------------------------~>\n");
 
             Console.WriteLine("Press <Enter> to continue...");
@@ -191,13 +189,16 @@ namespace ChemicalApp
 
                 flagMain = CheckFlag();
 
-                
+                Console.Clear();
             }
 
             //Display the chemicals with the highest and lowest rating
-            Console.WriteLine($"\nThe chemical with the highest rating is {HighChemical} with a rating of {HighChemicalRating}\n");
 
-            Console.WriteLine($"\nThe chemical with the lowest rating is {LowChemical} with a rating of {LowChemicalRating}\n");
+            Console.WriteLine("\nThe Most Efficient And Least Efficient Chemicals Were...\n");
+
+            Console.WriteLine($"\nThe chemical with the highest rating is {HighChemical} with a rating of {Math.Round(HighChemicalRating, 2)}%\n");
+
+            Console.WriteLine($"\nThe chemical with the lowest rating is {LowChemical} with a rating of {Math.Round(LowChemicalRating, 2)}%\n");
 
         }
     }
